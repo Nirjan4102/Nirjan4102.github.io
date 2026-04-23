@@ -241,40 +241,7 @@ function initLocalTime() {
 }
 
 // ── Interactive Hero Terminal ──
-function initHeroTerminal() {
-  const terminal = document.getElementById('terminal-body');
-  if (!terminal) return;
-  
-  const lines = [
-    { text: "npm start", delay: 500, color: "var(--text)" },
-    { text: "> portfolio@1.0.0 start", delay: 300, color: "var(--text-dim)" },
-    { text: "> node server.js", delay: 200, color: "var(--text-dim)" },
-    { text: "[Server] Starting backend service...", delay: 800, color: "#f1fa8c" },
-    { text: "[MongoDB] Connected to cluster successfully! 🚀", delay: 1000, color: "#50fa7b" },
-    { text: "[Auth] User system initialized.", delay: 400, color: "#8be9fd" },
-    { text: "Listening on port 5000...", delay: 200, color: "#ff79c6" }
-  ];
-
-  let currentLine = 0;
-  
-  function typeLine() {
-    if (currentLine >= lines.length) {
-      terminal.innerHTML += '<br><span style="color:var(--text)">nirjan@ubuntu: ~/portfolio$</span> <span class="cursor-blink" style="border-right: 2px solid #fff;"></span>';
-      return;
-    }
-    
-    setTimeout(() => {
-      const p = document.createElement('div');
-      p.style.color = lines[currentLine].color;
-      p.textContent = lines[currentLine].text;
-      terminal.appendChild(p);
-      currentLine++;
-      typeLine();
-    }, lines[currentLine].delay);
-  }
-  
-  typeLine();
-}
+// Removed as per user request.
 
 // ── Custom Context Menu ──
 function initContextMenu() {
@@ -320,6 +287,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initParallax();
   initThemeToggle();
   initLocalTime();
-  initHeroTerminal();
   initContextMenu();
 });
