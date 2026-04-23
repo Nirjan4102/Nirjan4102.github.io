@@ -270,6 +270,22 @@ function initContextMenu() {
   });
 }
 
+// ── Exclude My Visits ──
+function excludeMyVisits() {
+  localStorage.setItem('excludeVisitorCount', 'true');
+  const badge = document.getElementById('visitor-badge');
+  if (badge) badge.remove();
+  alert('Your visits will no longer be counted on this browser. The badge has been removed for you.');
+  document.getElementById('context-menu').style.display = 'none';
+}
+
+function initVisitorExclusion() {
+  if (localStorage.getItem('excludeVisitorCount') === 'true') {
+    const badge = document.getElementById('visitor-badge');
+    if (badge) badge.remove();
+  }
+}
+
 // ── Init All ──
 document.addEventListener('DOMContentLoaded', () => {
   createParticles();
@@ -288,4 +304,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initLocalTime();
   initContextMenu();
+  initVisitorExclusion();
 });

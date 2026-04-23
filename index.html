@@ -530,8 +530,8 @@
     </div>
     <p>Designed & Built by <strong>Nirjan Mondal</strong> with <span class="heart">❤</span></p>
     <p style="margin-top:4px">© 2026 All rights reserved.</p>
-    <div style="margin-top: 16px;">
-      <img src="https://api.visitorbadge.io/api/visitors?path=Nirjan4102.portfolio&label=VISITORS&labelColor=%2312121a&countColor=%236c63ff" alt="Visitor Counter">
+    <div style="margin-top: 16px;" id="visitor-badge-container">
+      <img id="visitor-badge" src="https://api.visitorbadge.io/api/visitors?path=Nirjan4102.portfolio&label=VISITORS&labelColor=%2312121a&countColor=%236c63ff" alt="Visitor Counter">
     </div>
   </div>
 </footer>
@@ -549,6 +549,9 @@
   </div>
   <div class="context-menu-item" onclick="document.getElementById('theme-toggle').click(); document.getElementById('context-menu').style.display='none';" style="padding: 10px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; transition: background 0.2s;">
     <i class="fas fa-adjust" style="color: var(--accent);"></i> Toggle Theme
+  </div>
+  <div class="context-menu-item" onclick="excludeMyVisits();" style="padding: 10px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; transition: background 0.2s;">
+    <i class="fas fa-user-shield" style="color: var(--accent3);"></i> Exclude My Visits
   </div>
 </div>
 
