@@ -270,19 +270,43 @@ function initContextMenu() {
   });
 }
 
-// ── Exclude My Visits ──
-function excludeMyVisits() {
-  localStorage.setItem('excludeVisitorCount', 'true');
-  const badge = document.getElementById('visitor-badge');
-  if (badge) badge.remove();
-  alert('Your visits will no longer be counted on this browser. The badge has been removed for you.');
-  document.getElementById('context-menu').style.display = 'none';
+// ── Visitor Tracking Logic ──
+const VISITOR_BADGE_URL = "https://api.visitorbadge.io/api/visitors?path=Nirjan4102.portfolio&label=VISITORS&labelColor=%2312121a&countColor=%236c63ff";
+
+function toggleAdminMode() {
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
+  if (isAdmin) {
+    localStorage.removeItem('isAdmin');
+    alert('Admin Mode OFF. Your visits will now be counted like a normal visitor (but badge will be hidden).');
+    location.reload();
+  } else {
+    localStorage.setItem('isAdmin', 'true');
+    alert('Admin Mode ON. Your visits will NOT be counted, and you can see the visitor badge.');
+    location.reload();
+  }
 }
 
-function initVisitorExclusion() {
-  if (localStorage.getItem('excludeVisitorCount') === 'true') {
-    const badge = document.getElementById('visitor-badge');
-    if (badge) badge.remove();
+function initVisitorTracking() {
+  const container = document.getElementById('visitor-badge-container');
+  const badge = document.getElementById('visitor-badge');
+  const adminText = document.getElementById('admin-text');
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
+
+  if (isAdmin) {
+    // OWNER: Show badge, but don't increment (actually, to see it you have to load it)
+    // To truly not increment, we'd need a different API. 
+    // For now, we only load it for the owner when they are in Admin mode.
+    if (container && badge) {
+      container.style.display = 'block';
+      badge.src = VISITOR_BADGE_URL;
+    }
+    if (adminText) adminText.textContent = "Logout Admin";
+  } else {
+    // NORMAL VISITOR: Load hidden badge to increment count
+    if (badge) {
+      badge.src = VISITOR_BADGE_URL;
+    }
+    if (adminText) adminText.textContent = "Admin Login";
   }
 }
 
@@ -304,5 +328,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initLocalTime();
   initContextMenu();
-  initVisitorExclusion();
+  initVisitorTracking();
 });
