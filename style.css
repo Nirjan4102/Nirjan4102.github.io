@@ -14,6 +14,19 @@
   --radius: 16px;
 }
 
+body.light-mode {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(0,0,0,0.02);
+  --accent: #4f46e5;
+  --accent2: #0d9488;
+  --accent3: #e11d48;
+  --text: #0f172a;
+  --text-dim: #475569;
+  --glass: rgba(0,0,0,0.04);
+  --glass-border: rgba(0,0,0,0.08);
+}
+
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -24,6 +37,7 @@ body {
   color: var(--text);
   overflow-x: hidden;
   line-height: 1.7;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ── SCROLLBAR ── */
