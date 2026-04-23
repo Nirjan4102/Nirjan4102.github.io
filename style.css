@@ -622,3 +622,34 @@ section { position: relative; z-index: 1; }
   .btn:hover { transform: none; }
   .btn-primary:hover { transform: none; box-shadow: 0 4px 20px rgba(108,99,255,0.3); }
 }
+
+/* ── NEW FEATURES ── */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: transparent;
+  vertical-align: middle;
+}
+
+.context-menu-item:hover {
+  background: var(--glass);
+}
+body.light-mode .context-menu-item:hover {
+  background: rgba(0,0,0,0.08);
+}
+body.light-mode .hero-terminal {
+  background: #1e1e1e !important;
+  color: #fff !important;
+  border-color: rgba(0,0,0,0.1) !important;
+}
+body.light-mode .terminal-header {
+  background: rgba(255,255,255,0.1) !important;
+  color: #888 !important;
+}
