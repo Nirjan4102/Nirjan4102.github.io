@@ -658,3 +658,9 @@ body.light-mode .terminal-header {
   0% { height: 2px; }
   100% { height: 14px; }
 }
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.5; }
+}
